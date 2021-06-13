@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    outline: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height: 440px;
+    width: 800px;
+    margin-top: -70px;
+    border-radius: 8px;
+}
+
+::-webkit-input-placeholder {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    color: white;  
+    font-family: 'Montserrat', sans-serif;
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    color: white;
+    font-family: 'Montserrat', sans-serif;  
+ }
+ 
+ :-ms-input-placeholder {  
+    color: white;
+    font-family: 'Montserrat', sans-serif;  
+ }
