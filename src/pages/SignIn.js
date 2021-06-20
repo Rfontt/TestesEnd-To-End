@@ -20,7 +20,7 @@ export default function SignIn() {
             localStorage.setItem('token', response.data.token);
             history.push('/main');
           }catch(error) {
-            await setError('Incorrect datas');
+            setError('Incorrect datas');
 
             setTimeout(() => {
               setError('');
