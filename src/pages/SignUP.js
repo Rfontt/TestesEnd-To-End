@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Legend, Input, Button, TextButton } from '../styles/SignInAndSignUp';
 import api from '../services/api';
 
@@ -7,6 +7,7 @@ export default function SignUp() {
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ error, setError ] = useState('');
+    const timeOutRef = useRef();
     const [ created, setCreated ] = useState('');
   
     async function createAccount(formEvent) {
@@ -21,16 +22,18 @@ export default function SignUp() {
           }catch(error) {
             setError("User already exists");
 
-            setTimeout(() => {
-                setError('');
-            }, 3000)
+            clearTimeout(timeOutRef.current);
+            timeOutRef.current = setTimeout(() => {
+              setError('');
+            }, 3000);
           }
         }else {
             setError("Fill in all fields");
 
-            setTimeout(() => {
-                setError('');
-            }, 3000)
+            clearTimeout(timeOutRef.current);
+            timeOutRef.current = setTimeout(() => {
+              setError('');
+            }, 3000);
         }
     } 
     

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Legend, Input, Button, TextButton } from '../styles/SignInAndSignUp';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
@@ -7,6 +7,7 @@ export default function SignIn() {
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ error, setError ] = useState('');
+    const timeOutRef = useRef();
     const history = useHistory();
 
     async function login(formEvent) {
@@ -21,17 +22,19 @@ export default function SignIn() {
             history.push('/main');
           }catch(error) {
             setError('Incorrect datas');
-
-            setTimeout(() => {
+            
+            clearTimeout(timeOutRef.current);
+            timeOutRef.current = setTimeout(() => {
               setError('');
-            }, 3000)
+            }, 3000);
           }
         }else {
           setError('Fill in all fields');
           
-          setTimeout(() => {
+          clearTimeout(timeOutRef.current);
+          timeOutRef.current = setTimeout(() => {
             setError('');
-          }, 3000)
+          }, 3000);
         }
     }
 
