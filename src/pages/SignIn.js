@@ -20,10 +20,18 @@ export default function SignIn() {
             localStorage.setItem('token', response.data.token);
             history.push('/main');
           }catch(error) {
-            setError('Incorrect datas');
+            await setError('Incorrect datas');
+
+            setTimeout(() => {
+              setError('');
+            }, 3000)
           }
         }else {
-          setError('Fill in all fields')
+          setError('Fill in all fields');
+          
+          setTimeout(() => {
+            setError('');
+          }, 3000)
         }
     }
 

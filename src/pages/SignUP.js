@@ -20,9 +20,17 @@ export default function SignUp() {
             setCreated("User created")
           }catch(error) {
             setError("User already exists");
+
+            setTimeout(() => {
+                setError('');
+            }, 3000)
           }
         }else {
             setError("Fill in all fields");
+
+            setTimeout(() => {
+                setError('');
+            }, 3000)
         }
     } 
     
